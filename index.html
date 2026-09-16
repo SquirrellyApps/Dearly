@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#fff7fb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Dearly">
+  <title>Dearly — Little reminders to love her</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div>
+        <div class="brand">dearly<span>♡</span></div>
+        <div class="tagline">little reminders to love her</div>
+      </div>
+      <button id="settingsBtn" class="icon-btn" aria-label="Settings">⚙</button>
+    </header>
+
+    <section id="setupView" class="card setup-card hidden">
+      <div class="heart">♡</div>
+      <h1>Who are you loving on?</h1>
+      <p>Tell Dearly her name and phone number. You can change these anytime in Settings.</p>
+      <label>Her name<input id="setupName" type="text" placeholder="Her name" autocomplete="name"></label>
+      <label>Phone number<input id="setupPhone" type="tel" placeholder="555-555-5555" autocomplete="tel"></label>
+      <button id="saveSetup" class="primary">Start loving on her →</button>
+    </section>
+
+    <section id="homeView">
+      <div class="recipient">
+        <div class="avatar" id="avatar">♡</div>
+        <div><span>Today, for</span><strong id="recipientName">her</strong></div>
+        <button id="editRecipient" class="mini-btn">Edit</button>
+      </div>
+
+      <section class="hero card">
+        <div class="eyebrow">A little something for her</div>
+        <div id="message" class="message">Loading something sweet…</div>
+        <div id="categoryLabel" class="category-label">Sweet & Romantic</div>
+        <div class="actions">
+          <button id="newMessage" class="secondary">↻ New message</button>
+          <button id="textHer" class="primary">♡ Text her</button>
+        </div>
+        <button id="copyMessage" class="text-btn">Copy message</button>
+      </section>
+
+      <section class="categories">
+        <h2>Choose a feeling</h2>
+        <div id="categoryChips" class="chips"></div>
+      </section>
+
+      <section class="stats">
+        <div class="stat card"><strong id="sentToday">0</strong><span>sent today</span></div>
+        <div class="stat card"><strong id="streak">0</strong><span>day streak</span></div>
+        <div class="stat card"><strong id="totalSent">0</strong><span>total sent</span></div>
+      </section>
+
+      <section class="card reminder-card">
+        <div>
+          <div class="eyebrow">Daily reminders</div>
+          <h2 id="reminderSummary">3 reminders a day</h2>
+          <p id="reminderTimes">9:00 AM · 1:00 PM · 7:30 PM</p>
+        </div>
+        <button id="notificationBtn" class="secondary small">Enable</button>
+      </section>
+    </section>
+
+    <section id="settingsView" class="card settings hidden">
+      <div class="settings-head"><button id="backBtn" class="text-btn">← Back</button><h1>Settings</h1></div>
+      <label>Her name<input id="settingsName" type="text"></label>
+      <label>Phone number<input id="settingsPhone" type="tel"></label>
+
+      <div class="setting-row"><div><strong>Reminders</strong><span>Get a gentle prompt to send something loving.</span></div><input id="remindersEnabled" type="checkbox" class="toggle"></div>
+      <label>Reminders per day
+        <select id="reminderCount"></select>
+      </label>
+      <div id="timeFields" class="time-fields"></div>
+
+      <div class="setting-row"><div><strong>Avoid repeats</strong><span>Prefer messages you haven't recently used.</span></div><input id="avoidRepeats" type="checkbox" class="toggle"></div>
+
+      <label>Custom messages <textarea id="customMessages" rows="5" placeholder="One custom message per line"></textarea></label>
+
+      <button id="saveSettings" class="primary">Save settings</button>
+      <button id="requestNotifications" class="secondary full">Allow notifications</button>
+      <p class="fine-print">Notifications depend on iPhone/browser support and permissions. Exact background delivery from a static GitHub Pages site is not guaranteed.</p>
+    </section>
+
+    <footer>Made for the little things that mean a lot.</footer>
+  </main>
+  <div id="toast" class="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
