@@ -820,6 +820,8 @@ const CATEGORIES={
     "I definitely still have a thing for you."
   ]
 };
+CATEGORIES.All=["Sweet & Romantic","Appreciation","Thinking of You","Encouragement","Make Her Smile","Thank Her","Goodnight","Flirty"];
+
 const DEFAULT={name:"",phone:"",remindersEnabled:true,reminderCount:3,times:["09:00","13:00","19:30"],avoidRepeats:true,customMessages:"",sent:[],used:[],deviceId:""};
 let state={...DEFAULT,...load()},category="Sweet & Romantic",currentMessage="";
 
