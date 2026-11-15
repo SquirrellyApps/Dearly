@@ -44,10 +44,12 @@
 <option value="Goodnight">Goodnight</option>
 <option value="Flirty">Flirty</option>
 </select>
-<div id="categoryChips" class="chips" hidden></div>
+<!-- Kept as a hidden compatibility bridge for the existing category logic. -->
+<div id="categoryChips" class="chips" style="display:none!important" aria-hidden="true"></div>
 </section>
 <section class="stats"><div class="stat card"><strong id="sentToday">0</strong><span>sent today</span></div><div class="stat card"><strong id="streak">0</strong><span>day streak</span></div><div class="stat card"><strong id="totalSent">0</strong><span>total sent</span></div></section>
-<section class="card reminder-card"><div><div class="eyebrow">Background reminders</div><h2 id="reminderSummary">3 reminders a day</h2><p id="reminderTimes">9:00 AM · 1:00 PM · 7:30 PM</p></div><button id="notificationBtn" class="secondary small">Enable</button></section>
+<!-- Reminder controls remain available in Settings; this legacy main-page card is hidden. -->
+<section class="card reminder-card hidden"><div><div class="eyebrow">Background reminders</div><h2 id="reminderSummary">3 reminders a day</h2><p id="reminderTimes">9:00 AM · 1:00 PM · 7:30 PM</p></div><button id="notificationBtn" class="secondary small">Enable</button></section>
 </section>
 
 <section id="settingsView" class="card settings hidden">
@@ -76,15 +78,14 @@ document.addEventListener("DOMContentLoaded", function () {
   if (!select || !legacyButtons) return;
 
   select.addEventListener("change", function () {
-    const option = select.value;
-    const button = Array.from(legacyButtons.querySelectorAll(".chip"))
-      .find(function (item) { return item.dataset.cat === option; });
-    if (button) button.click();
+    const selectedButton = Array.from(legacyButtons.querySelectorAll(".chip"))
+      .find(function (button) { return button.dataset.cat === select.value; });
+    if (selectedButton) selectedButton.click();
   });
 
   const syncSelection = function () {
-    const active = legacyButtons.querySelector(".chip.active");
-    if (active) select.value = active.dataset.cat;
+    const activeButton = legacyButtons.querySelector(".chip.active");
+    if (activeButton) select.value = activeButton.dataset.cat;
   };
   syncSelection();
 });
