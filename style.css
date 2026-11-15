@@ -29,3 +29,42 @@ input,select,textarea{width:100%;margin-top:7px;padding:13px 14px;border:1px sol
 .toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);opacity:0;background:#332c31;color:#fff;padding:11px 15px;border-radius:999px;font-size:12px;transition:.2s;pointer-events:none}.toast.show{opacity:1;transform:translate(-50%,0)}
 footer{text-align:center;color:#786d75;font-size:10px;padding:25px 0;text-shadow:0 1px 8px white}
 @media(max-width:420px){body{background-size:cover,100% auto;background-position:center top,center bottom}.message{font-size:24px}.actions{flex-direction:column}.stats{gap:6px}.app-shell{padding-left:14px;padding-right:14px}}
+
+/* Transparency refinement: softer controls and lighter supporting copy */
+.primary{
+  background:rgba(217,107,145,.78);
+  box-shadow:0 4px 14px rgba(217,107,145,.12);
+}
+.secondary{
+  background:rgba(248,219,231,.58);
+  color:rgba(117,70,90,.82);
+}
+.icon-btn,.mini-btn{
+  background:rgba(255,255,255,.42);
+  color:rgba(129,118,124,.78);
+  box-shadow:0 3px 12px rgba(75,43,57,.045);
+}
+.text-btn{
+  color:rgba(217,107,145,.78);
+}
+.tagline,.recipient span,.category-label,.stat span,
+.reminder-card p,.setting-row span,.fine-print,footer{
+  opacity:.76;
+}
+.eyebrow{
+  opacity:.82;
+}
+.chip{
+  background:rgba(255,255,255,.62);
+  color:rgba(129,118,124,.84);
+}
+.chip.active{
+  background:rgba(217,107,145,.78);
+  color:rgba(255,255,255,.96);
+}
+input,select,textarea{
+  background:rgba(255,255,255,.72);
+}
+.card{
+  background:rgba(255,255,255,.73);
+}
