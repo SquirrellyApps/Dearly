@@ -32,7 +32,20 @@
 <div class="actions"><button id="newMessage" class="secondary">↻ New message</button><button id="textHer" class="primary">♡ Text her</button></div>
 <button id="copyMessage" class="text-btn">Copy message</button>
 </section>
-<section class="categories"><h2>Choose a feeling</h2><div id="categoryChips" class="chips"></div></section>
+<section class="categories"><h2>Choose a feeling</h2>
+<select id="categorySelect" class="category-select" aria-label="Choose a feeling">
+<option value="All">All feelings</option>
+<option value="Sweet &amp; Romantic">Sweet &amp; Romantic</option>
+<option value="Appreciation">Appreciation</option>
+<option value="Thinking of You">Thinking of You</option>
+<option value="Encouragement">Encouragement</option>
+<option value="Make Her Smile">Make Her Smile</option>
+<option value="Thank Her">Thank Her</option>
+<option value="Goodnight">Goodnight</option>
+<option value="Flirty">Flirty</option>
+</select>
+<div id="categoryChips" class="chips" hidden></div>
+</section>
 <section class="stats"><div class="stat card"><strong id="sentToday">0</strong><span>sent today</span></div><div class="stat card"><strong id="streak">0</strong><span>day streak</span></div><div class="stat card"><strong id="totalSent">0</strong><span>total sent</span></div></section>
 <section class="card reminder-card"><div><div class="eyebrow">Background reminders</div><h2 id="reminderSummary">3 reminders a day</h2><p id="reminderTimes">9:00 AM · 1:00 PM · 7:30 PM</p></div><button id="notificationBtn" class="secondary small">Enable</button></section>
 </section>
@@ -56,4 +69,24 @@
 <div id="toast" class="toast"></div>
 <script src="app.js"></script>
 <script src="push-fix.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const select = document.getElementById("categorySelect");
+  const legacyButtons = document.getElementById("categoryChips");
+  if (!select || !legacyButtons) return;
+
+  select.addEventListener("change", function () {
+    const option = select.value;
+    const button = Array.from(legacyButtons.querySelectorAll(".chip"))
+      .find(function (item) { return item.dataset.cat === option; });
+    if (button) button.click();
+  });
+
+  const syncSelection = function () {
+    const active = legacyButtons.querySelector(".chip.active");
+    if (active) select.value = active.dataset.cat;
+  };
+  syncSelection();
+});
+</script>
 </body></html>
